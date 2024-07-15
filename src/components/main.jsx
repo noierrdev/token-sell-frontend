@@ -44,7 +44,7 @@ export default function(props){
                     fullWidth
                     inputRef={refMint1}
                     />
-                    <Button variant="contained" sx={{marginLeft:1}} color="primary" >Sell</Button>
+                    <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Sell</Button>
                 </Box>
             </form>
             
@@ -58,7 +58,7 @@ export default function(props){
                     />
                     <Typography sx={{marginLeft:1}}>Quoted : </Typography>
                     <Switch checked={Quoted} onChange={e=>setQuoted(e.target.checked)} />
-                    <Button variant="contained" sx={{marginLeft:1}} color="primary" >Sell</Button>
+                    <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Sell</Button>
                 </Box>
             </form>
         </>

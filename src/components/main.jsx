@@ -16,6 +16,8 @@ export default function(props){
         .then(response=>{
             if(response.data.status=="success"){
                 snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+            }else{
+                snackbar.enqueueSnackbar("Error!")
             }
         })
     }
@@ -30,6 +32,8 @@ export default function(props){
         .then(response=>{
             if(response.data.status=="success"){
                 snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+            }else{
+                snackbar.enqueueSnackbar("Error!")
             }
         })
     }

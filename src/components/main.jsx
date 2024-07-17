@@ -1,7 +1,7 @@
 import { Box, Button, Container, CssBaseline, Switch, TextField, ThemeProvider, Typography, createTheme } from '@mui/material'
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
-import {BACKEND_URL} from "../Configs"
+import {BACKEND_URL,BOT_URL} from "../Configs"
 import { useSnackbar } from 'notistack';
 export default function(props){
     const refMint1=useRef(null);
@@ -13,6 +13,14 @@ export default function(props){
         const targetToken=refMint1.current.value;
         if(!targetToken) return;
         axios.get(`${BACKEND_URL}/sell/${targetToken}`)
+        .then(response=>{
+            if(response.data.status=="success"){
+                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+            }else{
+                snackbar.enqueueSnackbar("Error!")
+            }
+        })
+        axios.get(`${BOT_URL}/sell/${targetToken}`)
         .then(response=>{
             if(response.data.status=="success"){
                 snackbar.enqueueSnackbar("Sold!",{variant:"success"})

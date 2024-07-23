@@ -8,6 +8,7 @@ export default function(props){
     const refMint2=useRef(null);
     const refBurnedMint1=useRef(null);
     const refBurnedMint2=useRef(null);
+    const refPumpfunMint=useRef(null)
     const snackbar=useSnackbar();
     const [Quoted, setQuoted]=useState(true);
     const basicSell=(e)=>{
@@ -162,28 +163,17 @@ export default function(props){
                 </Box>
             </form>
             <Typography align="center" sx={{marginTop:5,marginBottom:2}} variant="h4" component={"h4"} >Pumpfun!</Typography>
-            {/* <form style={{marginTop:1}} onSubmit={buyBurned} >
+            <form style={{marginTop:10}} onSubmit={sellPumpfun} >
                 <Box sx={{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-around"}} >
                     <TextField
                     variant="outlined"
                     size="small"
                     fullWidth
-                    inputRef={refBurnedMint1}
-                    />
-                    <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Buy</Button>
-                </Box>
-            </form>
-            <form style={{marginTop:10}} onSubmit={sellBurned} >
-                <Box sx={{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-around"}} >
-                    <TextField
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    inputRef={refBurnedMint2}
+                    inputRef={refPumpfunMint}
                     />
                     <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Sell</Button>
                 </Box>
-            </form> */}
+            </form>
         </>
     )
 }

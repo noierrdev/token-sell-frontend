@@ -48,27 +48,6 @@ export default function(props){
             }
         })
     }
-    const sellBurned=(e)=>{
-        e.preventDefault();
-        const targetToken=refBurnedMint2.current.value;
-        if(!targetToken) return;
-        axios.get(`${ALT_URL}/sell/${targetToken}`)
-        .then(response=>{
-            if(response.data.status=="success"){
-                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
-            }else{
-                snackbar.enqueueSnackbar("Error!")
-            }
-        })
-        axios.get(`${BACKEND_URL}/sell/${targetToken}`)
-        .then(response=>{
-            if(response.data.status=="success"){
-                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
-            }else{
-                snackbar.enqueueSnackbar("Error!")
-            }
-        })
-    }
     const buyBurned=(e)=>{
         e.preventDefault();
         const targetToken=refBurnedMint1.current.value;
@@ -90,9 +69,31 @@ export default function(props){
             }
         })
     }
-    const sellPumpfun=(e)=>{
+    const sellBurned=(e)=>{
         e.preventDefault();
         const targetToken=refBurnedMint2.current.value;
+        if(!targetToken) return;
+        axios.get(`${ALT_URL}/sell/${targetToken}`)
+        .then(response=>{
+            if(response.data.status=="success"){
+                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+            }else{
+                snackbar.enqueueSnackbar("Error!")
+            }
+        })
+        axios.get(`${BACKEND_URL}/sell/${targetToken}`)
+        .then(response=>{
+            if(response.data.status=="success"){
+                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+            }else{
+                snackbar.enqueueSnackbar("Error!")
+            }
+        })
+    }
+    
+    const sellPumpfun=(e)=>{
+        e.preventDefault();
+        const targetToken=refPumpfunMint.current.value;
         if(!targetToken) return;
         axios.get(`${ALT_URL}/pumpfun/sell/${targetToken}`)
         .then(response=>{

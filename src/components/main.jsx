@@ -128,6 +128,7 @@ export default function(props){
                     size="small"
                     fullWidth
                     inputRef={refMint1}
+                    placeholder='Token Mint'
                     />
                     <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Sell</Button>
                 </Box>
@@ -140,6 +141,7 @@ export default function(props){
                     size="small"
                     inputRef={refMint2}
                     sx={{flexGrow:1}}
+                    placeholder='Token Mint'
                     />
                     <Typography sx={{marginLeft:1}}>Quoted : </Typography>
                     <Switch checked={Quoted} onChange={e=>setQuoted(e.target.checked)} />
@@ -153,6 +155,7 @@ export default function(props){
                     variant="outlined"
                     size="small"
                     type="password"
+                    placeholder='password'
                     fullWidth
                     inputRef={refPassword}
                     />
@@ -160,6 +163,7 @@ export default function(props){
                     variant="outlined"
                     size="small"
                     fullWidth
+                    placeholder='Token Mint'
                     inputRef={refBurnedMint1}
                     sx={{marginLeft:1}}
                     />
@@ -172,6 +176,7 @@ export default function(props){
                     variant="outlined"
                     size="small"
                     fullWidth
+                    placeholder='Token Mint'
                     inputRef={refBurnedMint2}
                     />
                     <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Sell</Button>
@@ -184,6 +189,7 @@ export default function(props){
                     variant="outlined"
                     size="small"
                     fullWidth
+                    placeholder='Token Mint'
                     inputRef={refPumpfunMint}
                     />
                     <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Sell</Button>

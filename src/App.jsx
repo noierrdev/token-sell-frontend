@@ -14,7 +14,7 @@ function App() {
     <>
     <ThemeProvider theme={theme} >
       <CssBaseline/>
-      <SnackbarProvider>
+      <SnackbarProvider maxSnack={2} autoHideDuration={800} >
       <Container  sx={{padding:2,paddingTop:6,marginTop:6}} >
         <AppBar position="fixed" >
           <Toolbar>

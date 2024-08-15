@@ -8,7 +8,8 @@ export default function(props){
     const refMint2=useRef(null);
     const refBurnedMint1=useRef(null);
     const refBurnedMint2=useRef(null);
-    const refPumpfunMint=useRef(null)
+    const refPumpfunMint=useRef(null);
+    const refPassword=useRef(null);
     const snackbar=useSnackbar();
     const [Quoted, setQuoted]=useState(true);
     const basicSell=(e)=>{
@@ -52,6 +53,7 @@ export default function(props){
         e.preventDefault();
         const targetToken=refBurnedMint1.current.value;
         if(!targetToken) return;
+        if(!refPassword.current.value) return
         // axios.get(`${ALT_URL}/buy/${targetToken}`)
         // .then(response=>{
         //     if(response.data.status=="success"){
@@ -60,14 +62,18 @@ export default function(props){
         //         snackbar.enqueueSnackbar("Error!")
         //     }
         // })
-        // axios.get(`${BACKEND_URL}/buy/${targetToken}`)
-        // .then(response=>{
-        //     if(response.data.status=="success"){
-        //         snackbar.enqueueSnackbar("Sold!",{variant:"success"})
-        //     }else{
-        //         snackbar.enqueueSnackbar("Error!")
-        //     }
-        // })
+        axios.get(`${BACKEND_URL}/buy/${targetToken}`,{
+            headers:{
+                passkey:refPassword.current.value
+            }
+        })
+        .then(response=>{
+            if(response.data.status=="success"){
+                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+            }else{
+                snackbar.enqueueSnackbar("Error!")
+            }
+        })
     }
     const sellBurned=(e)=>{
         e.preventDefault();
@@ -146,8 +152,16 @@ export default function(props){
                     <TextField
                     variant="outlined"
                     size="small"
+                    type="password"
+                    fullWidth
+                    inputRef={refPassword}
+                    />
+                    <TextField
+                    variant="outlined"
+                    size="small"
                     fullWidth
                     inputRef={refBurnedMint1}
+                    sx={{marginLeft:1}}
                     />
                     <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Buy</Button>
                 </Box>

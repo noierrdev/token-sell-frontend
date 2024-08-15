@@ -8,7 +8,7 @@ export default function(){
     const snackbar=useSnackbar();
     const refMint=useRef(null)
     const pasteMint=async ()=>{
-        refMint.current.value=await navigator.clipboard.readText();
+        refMint.current.value=await window.navigator.clipboard.readText.readText();
     }
     const buyRequest=async ()=>{
         console.log(`BUY : ${refMint.current.value}`)

@@ -45,6 +45,7 @@ export default function(){
                 id="outlined-adornment-password"
                 fullWidth
                 inputRef={refMint}
+                // ref={refMint}
                 endAdornment={
                 <InputAdornment position="end">
                     <IconButton

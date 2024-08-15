@@ -60,14 +60,14 @@ export default function(props){
         //         snackbar.enqueueSnackbar("Error!")
         //     }
         // })
-        axios.get(`${BACKEND_URL}/buy/${targetToken}`)
-        .then(response=>{
-            if(response.data.status=="success"){
-                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
-            }else{
-                snackbar.enqueueSnackbar("Error!")
-            }
-        })
+        // axios.get(`${BACKEND_URL}/buy/${targetToken}`)
+        // .then(response=>{
+        //     if(response.data.status=="success"){
+        //         snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+        //     }else{
+        //         snackbar.enqueueSnackbar("Error!")
+        //     }
+        // })
     }
     const sellBurned=(e)=>{
         e.preventDefault();

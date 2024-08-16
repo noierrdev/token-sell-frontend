@@ -101,6 +101,14 @@ export default function(props){
         e.preventDefault();
         const targetToken=refPumpfunMint.current.value;
         if(!targetToken) return;
+        axios.get(`${BACKEND_URL}}/pumpfun/sell/${targetToken}`)
+        .then(response=>{
+            if(response.data.status=="success"){
+                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+            }else{
+                snackbar.enqueueSnackbar("Error!")
+            }
+        })
         axios.get(`${ALT_URL}/pumpfun/sell/${targetToken}`)
         .then(response=>{
             if(response.data.status=="success"){

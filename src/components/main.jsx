@@ -109,22 +109,22 @@ export default function(props){
                 snackbar.enqueueSnackbar("Error!")
             }
         })
-        axios.get(`${ALT_URL}/pumpfun/sell/${targetToken}`)
-        .then(response=>{
-            if(response.data.status=="success"){
-                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
-            }else{
-                snackbar.enqueueSnackbar("Error!")
-            }
-        })
-        axios.get(`${BOT_URL}/pumpfun/sell/${targetToken}`)
-        .then(response=>{
-            if(response.data.status=="success"){
-                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
-            }else{
-                snackbar.enqueueSnackbar("Error!")
-            }
-        })
+        // axios.get(`${ALT_URL}/pumpfun/sell/${targetToken}`)
+        // .then(response=>{
+        //     if(response.data.status=="success"){
+        //         snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+        //     }else{
+        //         snackbar.enqueueSnackbar("Error!")
+        //     }
+        // })
+        // axios.get(`${BOT_URL}/pumpfun/sell/${targetToken}`)
+        // .then(response=>{
+        //     if(response.data.status=="success"){
+        //         snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+        //     }else{
+        //         snackbar.enqueueSnackbar("Error!")
+        //     }
+        // })
     }
     return (
         <>

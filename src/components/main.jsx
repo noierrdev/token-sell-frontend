@@ -10,6 +10,8 @@ export default function(props){
     const refBurnedMint2=useRef(null);
     const refPumpfunMint=useRef(null);
     const refPassword=useRef(null);
+    const refPumpfunPassword=useRef(null);
+    const refBuyPumpfunMint=useRef(null);
     const snackbar=useSnackbar();
     const [Quoted, setQuoted]=useState(true);
     const basicSell=(e)=>{
@@ -126,6 +128,41 @@ export default function(props){
         //     }
         // })
     }
+
+    const buyPumpfun=(e)=>{
+        e.preventDefault();
+        const targetToken=refBuyPumpfunMint.current.value;
+        if(!targetToken) return;
+        if(!refPumpfunPassword.current.value) return;
+        axios.get(`${BACKEND_URL}/pumpfun/buy/${targetToken}`,{
+            headers:{
+                passkey:refPumpfunPassword.current.value
+            }
+        })
+        .then(response=>{
+            if(response.data.status=="success"){
+                snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+            }else{
+                snackbar.enqueueSnackbar("Error!")
+            }
+        })
+        // axios.get(`${ALT_URL}/pumpfun/sell/${targetToken}`)
+        // .then(response=>{
+        //     if(response.data.status=="success"){
+        //         snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+        //     }else{
+        //         snackbar.enqueueSnackbar("Error!")
+        //     }
+        // })
+        // axios.get(`${BOT_URL}/pumpfun/sell/${targetToken}`)
+        // .then(response=>{
+        //     if(response.data.status=="success"){
+        //         snackbar.enqueueSnackbar("Sold!",{variant:"success"})
+        //     }else{
+        //         snackbar.enqueueSnackbar("Error!")
+        //     }
+        // })
+    }
     return (
         <>
             <Typography align="center" sx={{marginBottom:5}} variant="h4" component={"h4"} >Sell Raydium Tokens!</Typography>
@@ -191,6 +228,27 @@ export default function(props){
                 </Box>
             </form>
             <Typography align="center" sx={{marginTop:5,marginBottom:2}} variant="h4" component={"h4"} >Pumpfun!</Typography>
+            <form style={{marginTop:1}} onSubmit={buyPumpfun} >
+                <Box sx={{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-around"}} >
+                    <TextField
+                    variant="outlined"
+                    size="small"
+                    type="password"
+                    placeholder='password'
+                    fullWidth
+                    inputRef={refPumpfunPassword}
+                    />
+                    <TextField
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    placeholder='Token Mint'
+                    inputRef={refBuyPumpfunMint}
+                    sx={{marginLeft:1}}
+                    />
+                    <Button type="submit" variant="contained" sx={{marginLeft:1}} color="primary" >Buy</Button>
+                </Box>
+            </form>
             <form style={{marginTop:10}} onSubmit={sellPumpfun} >
                 <Box sx={{width:"100%",display:"flex",alignItems:"center",justifyContent:"space-around"}} >
                     <TextField
